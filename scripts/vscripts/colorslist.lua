@@ -1,6 +1,3 @@
---print("Starting Franug test!")
-require("advertlist")
-
 function ReplaceColorCodes(text)
 	text = string.gsub(text, "{white}", "\x01")
 	text = string.gsub(text, "{darkred}", "\x02")
@@ -20,18 +17,3 @@ function ReplaceColorCodes(text)
 	text = string.gsub(text, "{lightred}", "\x0F")
 	return text
 end
-
-function PrintChatAll(text)		
-	ScriptPrintMessageChatAll(" " .. ReplaceColorCodes(text))
-end
-
-
-function OnRoundFreezeEnd(event)
-    for _, v in pairs(AdvertList) do
-        PrintChatAll(v)
-    end
-end
-
-tListenerIds = {
-    ListenToGameEvent("round_freeze_end", OnRoundFreezeEnd, nil)
-}
